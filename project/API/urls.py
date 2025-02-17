@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import get_pedidos, create_pedido, pedido_detail
+from .views import get_orders, create_Order, Order_detail
 
 urlpatterns = [
-    path('pedidos/', get_pedidos, name='get_pedidos'),
-    path('pedidos/create', create_pedido, name='create_pedido'),
-    path('pedidos/<int:pk>', pedido_detail, name='pedido_detail'),
+    path('orders/', get_orders, name='get_orders'),
+    path('orders/create', create_Order, name='create_Order'),
+    path('orders/<int:pk>', Order_detail, name='Order_detail'),
 ]
 
+O

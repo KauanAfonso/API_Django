@@ -1,36 +1,36 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .serializer import PedidoSerializer
-from .models import Pedido
+from .serializer import orderserializer
+from .models import Order
 # Create your views here.
 
 
 @api_view(["GET"])
-def get_pedidos(request):
-    pedidos = Pedido.objects.all()
-    serializer = PedidoSerializer(pedidos, many=True)
+def get_orders(request):
+    orders = Order.objects.all()
+    serializer = orderserializer(orders, many=True)
     return Response(serializer.data)
 
 @api_view(["GET" , "DELETE", "PUT"]) 
-def pedido_detail(request, pk):
+def Order_detail(request, pk):
     try:
-        id_pedido = Pedido.objects.get(pk=pk)
-    except Pedido.DoesNotExist:
+        id_Order = Order.objects.get(pk=pk)
+    except Order.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     
     if request.method == "GET":
-        serializer = PedidoSerializer(id_pedido)
+        serializer = orderserializer(id_Order)
         return Response(serializer.data)
     
     if request.method == "DELETE":
-        operacao = id_pedido.delete()
+        operacao = id_Order.delete()
         if operacao:
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     elif request.method == "PUT":
-        serializer = PedidoSerializer(id_pedido, data=request.data)
+        serializer = orderserializer(id_Order, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -38,8 +38,8 @@ def pedido_detail(request, pk):
 
 
 @api_view(["POST"]) 
-def create_pedido(request):
-   serializer = PedidoSerializer(data=request.data)
+def create_Order(request):
+   serializer = orderserializer(data=request.data)
    if serializer.is_valid():
        serializer.save()
        return Response(serializer.data, status=status.HTTP_201_CREATED)
