@@ -1,5 +1,5 @@
 # API_Django
-API básica para firmar conhecimentos em django
+API básica para firmar conhecimentos em django restframework
 Relização de um CRUD para pedidos de oração. Utilizei @api_view para as criações de endpoints.
 
 Aqui está o README melhorado com mais clareza, organização e algumas explicações adicionais:  
