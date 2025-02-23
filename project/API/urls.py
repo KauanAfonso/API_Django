@@ -6,5 +6,3 @@ urlpatterns = [
     path('orders/create', create_Order, name='create_Order'),
     path('orders/<int:pk>', Order_detail, name='Order_detail'),
 ]
-
-O
