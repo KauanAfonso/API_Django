@@ -1,4 +1,4 @@
-# API_Django
+# API_Django Rest framework
 API básica para firmar conhecimentos em django restframework
 Relização de um CRUD para pedidos de oração. Utilizei @api_view para as criações de endpoints.
 
